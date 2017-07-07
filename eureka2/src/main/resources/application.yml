@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: eureka
+---
+spring:
+  profiles: e1                                 # 指定profile=e1
+server:
+  port: 5001
+eureka:
+  instance:
+    hostname: localhost                               
+  client:
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:5002/eureka/      # 将自己注册到端口5002这个Eureka上面去
+
+---
+spring:
+  profiles: e2
+server:
+  port: 5002
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:5001/eureka/
+      
